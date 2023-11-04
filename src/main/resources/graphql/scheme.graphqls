@@ -1,0 +1,88 @@
+type Query {
+    cars: [Car!]
+    getById (id: ID!):CarResponse
+    getAll: [CarResponse]
+}
+
+type Mutation {
+    save(carRequest: CarRequest): SimpleResponse!
+    update(id: ID, carRequest: CarRequest): SimpleResponse!
+    deleteById(id: ID):SimpleResponse!
+}
+
+type Car {
+    id: ID!
+    name: String
+    email: String
+    model: String
+    color: String
+    price: Int
+}
+
+input CarRequest {
+    name: String
+    email: String
+    model: String
+    color: String
+    price: Int
+}
+
+type SimpleResponse {
+    message: String
+}
+
+type CarResponse {
+    id: ID,
+    name: String
+    email: String
+    model: String
+    color: String
+    price: Int
+}
+
+# SAVE
+#mutation {
+#    save(carRequest: {name: "ExampleName", model: "exam"}) {
+#        message
+#    }
+#}
+
+# GET BY ID
+#query {
+#    getById(id: 1) {
+#        name
+#    }
+#}
+
+# UPDATE BY ID
+#mutation {
+#    update(id: 1, carRequest: {color: "red", email: "test email"}) {
+#        message
+#    }
+#}
+
+# DELETE BY ID
+#mutation {
+#    deleteById(id: 1) {
+#        message
+#    }
+#}
+
+# GET ALL
+#query {
+#    getAll {
+#        name
+#        email
+#        id
+#    }
+#}
+
+# Keyboard shortcuts:
+#
+#   Prettify query:  Shift-Ctrl-P (or press the prettify button)
+#
+#  Merge fragments:  Shift-Ctrl-M (or press the merge button)
+#
+#        Run Query:  Ctrl-Enter (or press the play button)
+#
+#    Auto Complete:  Ctrl-Space (or just start typing)
